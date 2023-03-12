@@ -99,7 +99,9 @@ namespace MarsCompetitionTask.Pages
             {
                 onlineRadioButton.Click();
             }
- 
+            Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+            string screenshotPath = @"C:\Chithra - Industry Connect\MVP Studio\Automation_Final\MarsCompetitionTask\ScreenShots\AddSkillScreenshots.png";
+            screenshot.SaveAsFile(screenshotPath);
             //Enter Start date
             startDateDropDown.SendKeys(ExcelUtil.ReadData(rowNumber, "StartDate"));
 

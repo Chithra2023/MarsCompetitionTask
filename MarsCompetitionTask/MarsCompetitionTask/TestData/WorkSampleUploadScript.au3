@@ -1,0 +1,5 @@
+ControlFocus("Open","","Edit1")
+Sleep(1000)
+ControlSetText("Open","","Edit1","C:\Chithra - Industry Connect\MVP Studio\Automation_Final\MarsCompetitionTask\MarsCompetitionTask\Test Data\WorkSampleUpload.docx")
+Sleep(1000)
+ControlClick("Open","","Button1")

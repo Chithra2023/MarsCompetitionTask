@@ -36,7 +36,7 @@ namespace MarsCompetitionTask.Tests
             LoginPage loginpageObj = new LoginPage();
             loginpageObj.loginActions();
         }
-        [Test]
+        [Test, Order(1)]
         public void AddShareSkill()
         {
             test1 = extent1.CreateTest("Share Skills Test").Info("Add Skill Test Started");
@@ -51,7 +51,7 @@ namespace MarsCompetitionTask.Tests
             test1 = extent1.CreateTest("Edit Skills Test").Info("Edit Skill Test Started");
             // MangeListing Page object initialization and definition
             ManageListingsPage manageListingPageObj = new ManageListingsPage();
-            manageListingPageObj.EditListings(2);
+            manageListingPageObj.EditListings(3);
             manageListingPageObj.editListing.Should().BeTrue();
             //test1.Log(Status.Info, "Skill added Sucessfully to Manage Listings Page");
             test1.Log(Status.Pass, "Sucessfully Edited a Skill in the Manage Listing Page");
@@ -62,7 +62,7 @@ namespace MarsCompetitionTask.Tests
         {
             test1 = extent1.CreateTest("Delete Skill Test").Info("Delete Skill Test Started");
             ManageListingsPage manageListingPageObj = new ManageListingsPage();
-            manageListingPageObj.DeleteListings(2);
+            manageListingPageObj.DeleteListings(3);
             manageListingPageObj.deleteListing.Should().BeTrue();
             test1.Log(Status.Pass, "Sucessfully Deleted a Skill in the Manage Listing Page");
         }

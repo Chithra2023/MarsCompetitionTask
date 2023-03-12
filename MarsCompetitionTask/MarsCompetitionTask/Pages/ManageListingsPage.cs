@@ -61,7 +61,7 @@ namespace MarsCompetitionTask.Pages
             Wait.WaitForElementToBeClickable(driver, "XPath", "//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[2]/i", 5);
             firstRowEditButton.Click();
             //Populate the Excel Sheet
-            ExcelUtil.PopulateInCollection(@"C:\Chithra - Industry Connect\MVP Studio\Automation_Final\CompetitionTask_ProjectMars\ShareSkill_TestData.xlsx");
+            ExcelUtil.PopulateInCollection(@"C:\Chithra - Industry Connect\MVP Studio\Automation_Final\MarsCompetitionTask\MarsCompetitionTask\Test Data\ShareSkill_TestData.xlsx");
 
             //Edit Title
             titleEditTextBox.Clear();
@@ -78,6 +78,10 @@ namespace MarsCompetitionTask.Pages
             //Edit Subcategory
             SelectElement selectSubCategory = new SelectElement(subCategoryEditDropDown);
             selectSubCategory.SelectByText(ExcelUtil.ReadData(rowNumber, "Subcategory"));
+
+            Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+            string screenshotPath = @"C:\Chithra - Industry Connect\MVP Studio\Automation_Final\MarsCompetitionTask\ScreenShots\EditScreenShots.png";
+            screenshot.SaveAsFile(screenshotPath);
 
             //Edit Tags
             //Delete tags
@@ -162,11 +166,11 @@ namespace MarsCompetitionTask.Pages
         {
             GoToManageListingsTab();
             //Populate the Excel Sheet
-            ExcelUtil.PopulateInCollection(@"C:\Chithra - Industry Connect\MVP Studio\Automation_Final\CompetitionTask_ProjectMars\ShareSkill_TestData.xlsx");
+            ExcelUtil.PopulateInCollection(@"C:\Chithra - Industry Connect\MVP Studio\Automation_Final\MarsCompetitionTask\MarsCompetitionTask\Test Data\ShareSkill_TestData.xlsx");
 
             // Find the XPath of Delete Button with Title read from excel
             string titletoDelete = ExcelUtil.ReadData(rowNumber, "Title");
-            string delButtonXpath = "//div[@id='listing-management-section']//tbody/tr[contains(.,'" + titletoDelete + "')]/td[8]/div/button[3]";
+            string delButtonXpath = "//div[@id='listing-management-section']//tbody/tr[contains(.,'"+ titletoDelete +"')]/td[8]/div/button[3]";
             Wait.WaitForElementToExist(driver, "XPath", delButtonXpath, 5);
             IWebElement deleteButton = driver.FindElement(By.XPath(delButtonXpath));
             Wait.WaitForElementToBeClickable(driver, "XPath", delButtonXpath, 5);
@@ -185,6 +189,7 @@ namespace MarsCompetitionTask.Pages
                 //Click No
                 noDeleteButton.Click();
             }
+
             deleteListing = true;
         }
 
